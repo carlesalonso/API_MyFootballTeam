@@ -160,10 +160,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\API\APIAreaRegistration.cs" />
+    <Compile Include="Areas\API\Controllers\EjerciciosController.cs" />
+    <Compile Include="Areas\API\Controllers\EquiposController.cs" />
+    <Compile Include="Areas\API\Controllers\EventosController.cs" />
+    <Compile Include="Areas\API\Controllers\JugadoresController.cs" />
+    <Compile Include="Areas\API\Controllers\LoginsController.cs" />
+    <Compile Include="Areas\API\Controllers\PartidosController.cs" />
     <Compile Include="Areas\API\Controllers\UsuariosController.cs" />
+    <Compile Include="Areas\API\Models\Ejercicio.cs" />
+    <Compile Include="Areas\API\Models\EjercicioManager.cs" />
+    <Compile Include="Areas\API\Models\Entrenamiento.cs" />
+    <Compile Include="Areas\API\Models\Equipo.cs" />
+    <Compile Include="Areas\API\Models\EquipoManager.cs" />
+    <Compile Include="Areas\API\Models\Evento.cs" />
+    <Compile Include="Areas\API\Models\EventoManager.cs" />
+    <Compile Include="Areas\API\Models\Jugador.cs" />
+    <Compile Include="Areas\API\Models\JugadorManager.cs" />
+    <Compile Include="Areas\API\Models\Login.cs" />
+    <Compile Include="Areas\API\Models\LoginManager.cs" />
+    <Compile Include="Areas\API\Models\Partido.cs" />
+    <Compile Include="Areas\API\Models\PartidoManager.cs" />
+    <Compile Include="Areas\API\Token.cs" />
     <Compile Include="Areas\API\Models\Usuario.cs" />
     <Compile Include="Areas\API\Models\UsuarioManager.cs" />
-    <Compile Include="Areas\API\Models\Utilidades.cs" />
+    <Compile Include="Areas\API\Utilidades.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -231,6 +251,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\PublishProfiles\APIMyFootballTeam20170318043244.pubxml" />
+    <None Include="Properties\PublishProfiles\APIMyFootballTeamNuevaWebApp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
