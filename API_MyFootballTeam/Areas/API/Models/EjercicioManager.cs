@@ -53,7 +53,15 @@ namespace API_MyFootballTeam.Areas.API.Models
             //Segun rafa no hace falta poner el token porque no es un campo 
             comandaInsert.Parameters.Add("@NombreEjercicio", System.Data.SqlDbType.NVarChar).Value = ejercicio.NombreEjercicio;
             comandaInsert.Parameters.Add("@Descripcion", System.Data.SqlDbType.NVarChar).Value = ejercicio.Descripcion;
-            comandaInsert.Parameters.Add("@Foto", System.Data.SqlDbType.NVarChar).Value = ejercicio.Foto;
+            if (ejercicio.Foto == null)
+            {
+                comandaInsert.Parameters.Add("@Foto", System.Data.SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                comandaInsert.Parameters.Add("@Foto", System.Data.SqlDbType.NVarChar).Value = ejercicio.Foto;
+            }
+            //comandaInsert.Parameters.Add("@Foto", System.Data.SqlDbType.NVarChar).Value = ejercicio.Foto;
             comandaInsert.Parameters.Add("@Usuario_IdUsuario", System.Data.SqlDbType.Int).Value = idUsuario;
 
             int res = comandaInsert.ExecuteNonQuery();
@@ -111,8 +119,15 @@ namespace API_MyFootballTeam.Areas.API.Models
                 comandaUpdate.Parameters.Add("@IdEjercicio", System.Data.SqlDbType.NVarChar).Value = ejercicio.IdEjercicio;
                 comandaUpdate.Parameters.Add("@NombreEjercicio", System.Data.SqlDbType.NVarChar).Value = ejercicio.NombreEjercicio;
                 comandaUpdate.Parameters.Add("@Descripcion", System.Data.SqlDbType.NVarChar).Value = ejercicio.Descripcion;
-                comandaUpdate.Parameters.Add("@Foto", System.Data.SqlDbType.NVarChar).Value = ejercicio.Foto;
-                
+                if (ejercicio.Foto == null)
+                {
+                    comandaUpdate.Parameters.Add("@Foto", System.Data.SqlDbType.NVarChar).Value = DBNull.Value;
+                }
+                else
+                {
+                    comandaUpdate.Parameters.Add("@Foto", System.Data.SqlDbType.NVarChar).Value = ejercicio.Foto;
+                }
+
 
                 int res = comandaUpdate.ExecuteNonQuery();
                 return (res == 1);
@@ -169,7 +184,15 @@ namespace API_MyFootballTeam.Areas.API.Models
                 ejercicio.IdEjercicio = reader.GetInt32(0);
                 ejercicio.NombreEjercicio = reader.GetString(1);
                 ejercicio.Descripcion = reader.GetString(2);
-                ejercicio.Foto = reader.GetString(3);
+                try
+                {
+                    ejercicio.Foto = reader.GetString(3);
+                }
+                catch (Exception)
+                {
+                    ejercicio.Foto = null;
+                }
+
                 ejercicio.Usuario_IdUsuario = reader.GetInt32(4);
             }
             reader.Close();
@@ -223,7 +246,14 @@ namespace API_MyFootballTeam.Areas.API.Models
                 ejercicio.IdEjercicio = reader.GetInt32(0);
                 ejercicio.NombreEjercicio = reader.GetString(1);
                 ejercicio.Descripcion = reader.GetString(2);
-                ejercicio.Foto = reader.GetString(3);
+                try
+                {
+                    ejercicio.Foto = reader.GetString(3);
+                }
+                catch (Exception)
+                {
+                    ejercicio.Foto = null;
+                }
                 ejercicio.Usuario_IdUsuario = reader.GetInt32(4);
                 
 

@@ -203,6 +203,33 @@ namespace API_MyFootballTeam.Areas.API
                     action = "Eventos"
                 }
             );
+
+            //---------------------------------------------------------------
+            //--------------------- Entrenamiento --------------------
+            //---------------------------------------------------------------
+
+            //Esta ruta lleva al los metodos que necesitan un id o que solo hace una accion
+            context.MapRoute(
+                "APIEntrenamiento",
+                "API/Entrenamientos/Entrenamiento/{id}",
+                new
+                {
+                    controller = "Entrenamientos",
+                    action = "Entrenamiento",
+                    id = UrlParameter.Optional
+                }
+            );
+
+            //Esta ruta lleva al metodo que devuelve todos los usuarios
+            context.MapRoute(
+                "APIEntrenamientos",
+                "API/Entrenamientos",
+                new
+                {
+                    controller = "Entrenamientos",
+                    action = "Entrenamientos"
+                }
+            );
         }
     }
 }

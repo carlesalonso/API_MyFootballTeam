@@ -59,7 +59,14 @@ namespace API_MyFootballTeam.Areas.API.Models
             comandaInsert.Parameters.Add("@NombreEquipo", System.Data.SqlDbType.NVarChar).Value = equipo.NombreEquipo;
             comandaInsert.Parameters.Add("@Direccion", System.Data.SqlDbType.NVarChar).Value = equipo.Direccion;
             comandaInsert.Parameters.Add("@Categoria", System.Data.SqlDbType.NVarChar).Value = equipo.Categoria;
-            comandaInsert.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = equipo.FotoEscudo;
+            if (equipo.FotoEscudo == null)
+            {
+                comandaInsert.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = DBNull.Value;
+            }
+            else
+            {
+                comandaInsert.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = equipo.FotoEscudo;
+            }
             comandaInsert.Parameters.Add("@Usuario_IdUsuario", System.Data.SqlDbType.Int).Value = idUsuario;
 
             int res = comandaInsert.ExecuteNonQuery();
@@ -118,7 +125,14 @@ namespace API_MyFootballTeam.Areas.API.Models
                 comandaUpdate.Parameters.Add("@NombreEquipo", System.Data.SqlDbType.NVarChar).Value = equipo.NombreEquipo;
                 comandaUpdate.Parameters.Add("@Direccion", System.Data.SqlDbType.NVarChar).Value = equipo.Direccion;
                 comandaUpdate.Parameters.Add("@Categoria", System.Data.SqlDbType.NVarChar).Value = equipo.Categoria;
-                comandaUpdate.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = equipo.FotoEscudo;
+                if (equipo.FotoEscudo == null)
+                {
+                    comandaUpdate.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = DBNull.Value;
+                }
+                else
+                {
+                    comandaUpdate.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = equipo.FotoEscudo;
+                }
                 comandaUpdate.Parameters.Add("@idUsuario", System.Data.SqlDbType.NVarChar).Value = idUsuario;
 
                 int res = comandaUpdate.ExecuteNonQuery();
@@ -178,7 +192,14 @@ namespace API_MyFootballTeam.Areas.API.Models
                 equipo.NombreEquipo = reader.GetString(1);
                 equipo.Direccion = reader.GetString(2);
                 equipo.Categoria = reader.GetString(3);
-                equipo.FotoEscudo = reader.GetString(4);
+                try
+                {
+                    equipo.FotoEscudo = reader.GetString(4);
+                }
+                catch (Exception)
+                {
+                    equipo.FotoEscudo = null;
+                }
                 equipo.Usuario_IdUsuario = reader.GetInt32(5);
             }
             reader.Close();
@@ -233,7 +254,14 @@ namespace API_MyFootballTeam.Areas.API.Models
                 equipo.NombreEquipo = reader.GetString(1);
                 equipo.Direccion = reader.GetString(2);
                 equipo.Categoria = reader.GetString(3);
-                equipo.FotoEscudo = reader.GetString(4);
+                try
+                {
+                    equipo.FotoEscudo = reader.GetString(4);
+                }
+                catch (Exception)
+                {
+                    equipo.FotoEscudo = null;
+                }
                 equipo.Usuario_IdUsuario = reader.GetInt32(5);
 
                 lista.Add(equipo);

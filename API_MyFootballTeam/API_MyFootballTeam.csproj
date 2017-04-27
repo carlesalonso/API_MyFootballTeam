@@ -161,6 +161,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\API\APIAreaRegistration.cs" />
     <Compile Include="Areas\API\Controllers\EjerciciosController.cs" />
+    <Compile Include="Areas\API\Controllers\EntrenamientosController.cs" />
     <Compile Include="Areas\API\Controllers\EquiposController.cs" />
     <Compile Include="Areas\API\Controllers\EventosController.cs" />
     <Compile Include="Areas\API\Controllers\JugadoresController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Areas\API\Models\Ejercicio.cs" />
     <Compile Include="Areas\API\Models\EjercicioManager.cs" />
     <Compile Include="Areas\API\Models\Entrenamiento.cs" />
+    <Compile Include="Areas\API\Models\EntrenamientoManager.cs" />
     <Compile Include="Areas\API\Models\Equipo.cs" />
     <Compile Include="Areas\API\Models\EquipoManager.cs" />
     <Compile Include="Areas\API\Models\Evento.cs" />

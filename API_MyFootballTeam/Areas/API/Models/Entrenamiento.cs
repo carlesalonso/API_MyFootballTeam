@@ -8,7 +8,9 @@ namespace API_MyFootballTeam.Areas.API.Models
     public class Entrenamiento
     {
         public int IdEntrenamiento { get; set; }
-        public Boolean AsistenciaEntreno { get; set; }
+        public int Duracion { get; set; }
+        public int Orden { get; set; }
+        public int Ejercicio_IdEjercicio { get; set; }
         public int Equipo_IdEquipo { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace API_MyFootballTeam.Areas.API.Models
         private static string cadenaConexion = Utilidades.cadenaConexion;
 
         //--------------------------------*********
-        // Metodo para insertar un Evento 
+        // Metodo para insertar un Evento FUNCIONA
         //--------------------------------*********
         public bool InsertEvento(Evento evento)
         {
