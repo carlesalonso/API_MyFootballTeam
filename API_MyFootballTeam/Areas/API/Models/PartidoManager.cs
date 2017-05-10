@@ -14,7 +14,7 @@ namespace API_MyFootballTeam.Areas.API.Models
         //--------------------------------*********
         // Metodo para insertar un Partido FUNCIONA
         //--------------------------------*********
-        public bool InsertPartido(Partido partido)
+        public int InsertPartido(Partido partido)
         {
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             conexion.Open();
@@ -24,7 +24,7 @@ namespace API_MyFootballTeam.Areas.API.Models
             tokenLlamada = System.Web.HttpContext.Current.Request.Headers["token"];
             if (!(Token.BuscarTokenUsuario(tokenLlamada)))
             {
-                return false;
+                return -1;
             }
 
             string sqlQuery = "INSERT INTO Partido (FechaPartido, Jornada, Rival, Local, Equipo_IdEquipo) " +
@@ -42,15 +42,19 @@ namespace API_MyFootballTeam.Areas.API.Models
 
             int res = comandaInsert.ExecuteNonQuery();
 
+            //Esto me devuelve la id que acaba de crear
+            sqlQuery = "SELECT @@IDENTITY AS [@@IDENTITY]";
+            SqlCommand comandaSelect = new SqlCommand(sqlQuery, conexion);
+            SqlDataReader reader = comandaSelect.ExecuteReader();
+
+            object idPartido = -1;
+            if (reader.Read())
+            {  Boolean n= reader.HasRows;
+                idPartido = reader.GetValue(0);
+            }
+
             conexion.Close();
-            if (res == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Convert.ToInt32(idPartido);
         }
 
         //-----------------------------------*********

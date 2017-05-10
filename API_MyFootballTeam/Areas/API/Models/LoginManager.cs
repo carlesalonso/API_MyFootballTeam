@@ -63,7 +63,7 @@ namespace API_MyFootballTeam.Areas.API.Models
 
             reader.Close();
             //usuarioExiste = "false";
-            return usuarioExiste;
+            return null;
         }
 
         //------------------------------------------------------------------------**********

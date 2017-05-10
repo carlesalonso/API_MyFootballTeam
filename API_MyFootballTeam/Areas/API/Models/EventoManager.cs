@@ -27,24 +27,26 @@ namespace API_MyFootballTeam.Areas.API.Models
                 return false;
             }
 
-            string sqlQuery = "INSERT INTO Evento (Minuto, NombreEvento, Partido_IdPartido, Jugador_IdJugador) " +
-                "VALUES (@Minuto, @NombreEvento, @Partido_IdPartido, @Jugador_IdJugador)";
+            //string sqlQuery = "INSERT INTO Evento (Minuto, NombreEvento, Partido_IdPartido, Jugador_IdJugador) " +
+            //    "VALUES (@Minuto, @NombreEvento, @Partido_IdPartido, @Jugador_IdJugador)";
+            string sqlQuery = "INSERT INTO Evento (NombreEvento, Partido_IdPartido) " +
+                "VALUES (@NombreEvento, @Partido_IdPartido)";
 
             SqlCommand comandaInsert = new SqlCommand(sqlQuery, conexion);
 
             //Aqui sustituyo los valores que tienen el @ por los que le vamos a insertar
 
-            comandaInsert.Parameters.Add("@Minuto", System.Data.SqlDbType.Int).Value = evento.Minuto;
+            //comandaInsert.Parameters.Add("@Minuto", System.Data.SqlDbType.Int).Value = evento.Minuto;
             comandaInsert.Parameters.Add("@NombreEvento", System.Data.SqlDbType.NVarChar).Value = evento.NombreEvento;
             comandaInsert.Parameters.Add("@Partido_IdPartido", System.Data.SqlDbType.Int).Value = evento.Partido_IdPartido;
-            if (evento.Jugador_IdJugador == -1)
-            {
-                comandaInsert.Parameters.Add("@Jugador_IdJugador", System.Data.SqlDbType.Int).Value = DBNull.Value;
-            }
-            else
-            {
-                comandaInsert.Parameters.Add("@Jugador_IdJugador", System.Data.SqlDbType.Int).Value = evento.Jugador_IdJugador;
-            }
+            //if (evento.Jugador_IdJugador == -1)
+            //{
+            //    comandaInsert.Parameters.Add("@Jugador_IdJugador", System.Data.SqlDbType.Int).Value = DBNull.Value;
+            //}
+            //else
+            //{
+            //    comandaInsert.Parameters.Add("@Jugador_IdJugador", System.Data.SqlDbType.Int).Value = evento.Jugador_IdJugador;
+            //}
 
 
             int res = comandaInsert.ExecuteNonQuery();
