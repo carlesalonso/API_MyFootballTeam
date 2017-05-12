@@ -24,8 +24,8 @@ namespace API_MyFootballTeam.Areas.API.Models
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             conexion.Open();
             
-            string sqlQuery = "INSERT INTO Usuario (EmailUsuario, Password, NombreUsuario, ApellidoUsuario, TelefonoUsuario, NIF, IBAN) " +
-                "VALUES (@EmailUsuario, @Password, @NombreUsuario, @ApellidoUsuario, @TelefonoUsuario, @NIF, @IBAN)";
+            string sqlQuery = "INSERT INTO Usuario (EmailUsuario, Password, NombreUsuario, ApellidoUsuario, TelefonoUsuario) " +
+                "VALUES (@EmailUsuario, @Password, @NombreUsuario, @ApellidoUsuario, @TelefonoUsuario)";
 
             SqlCommand comandaInsert = new SqlCommand(sqlQuery, conexion);
             SqlCommand comandaBuscarId= new SqlCommand(sqlQuery, conexion);
@@ -38,8 +38,8 @@ namespace API_MyFootballTeam.Areas.API.Models
             comandaInsert.Parameters.Add("@NombreUsuario", System.Data.SqlDbType.NVarChar).Value = usuario.NombreUsuario;
             comandaInsert.Parameters.Add("@ApellidoUsuario", System.Data.SqlDbType.NVarChar).Value = usuario.ApellidoUsuario;
             comandaInsert.Parameters.Add("@TelefonoUsuario", System.Data.SqlDbType.NVarChar).Value = usuario.TelefonoUsuario;
-            comandaInsert.Parameters.Add("@NIF", System.Data.SqlDbType.NVarChar).Value = usuario.NIF;
-            comandaInsert.Parameters.Add("@IBAN", System.Data.SqlDbType.NVarChar).Value = usuario.IBAN;
+            //comandaInsert.Parameters.Add("@NIF", System.Data.SqlDbType.NVarChar).Value = usuario.NIF;
+            //comandaInsert.Parameters.Add("@IBAN", System.Data.SqlDbType.NVarChar).Value = usuario.IBAN;
             
             int res = comandaInsert.ExecuteNonQuery();
             if (res == 0)
@@ -96,7 +96,7 @@ namespace API_MyFootballTeam.Areas.API.Models
             {
                 // vuelvo a hashear la contraseña con el password y la id
                 hash = Utilidades.Hasheo(usuario.Password, Convert.ToString(usuario.IdUsuario));
-                string sqlQuery = "UPDATE Usuario SET EmailUsuario = @EmailUsuario, Password = @Password, NombreUsuario = @NombreUsuario, ApellidoUsuario = @ApellidoUsuario, TelefonoUsuario = @TelefonoUsuario, NIF = @NIF, IBAN = @IBAN WHERE Token = @Token";
+                string sqlQuery = "UPDATE Usuario SET EmailUsuario = @EmailUsuario, Password = @Password, NombreUsuario = @NombreUsuario, ApellidoUsuario = @ApellidoUsuario, TelefonoUsuario = @TelefonoUsuario WHERE Token = @Token";
 
                 SqlCommand comandaUpdate = new SqlCommand(sqlQuery, conexion);
 
@@ -106,8 +106,8 @@ namespace API_MyFootballTeam.Areas.API.Models
                 comandaUpdate.Parameters.Add("@NombreUsuario", System.Data.SqlDbType.NVarChar).Value = usuario.NombreUsuario;
                 comandaUpdate.Parameters.Add("@ApellidoUsuario", System.Data.SqlDbType.NVarChar).Value = usuario.ApellidoUsuario;
                 comandaUpdate.Parameters.Add("@TelefonoUsuario", System.Data.SqlDbType.NVarChar).Value = usuario.TelefonoUsuario;
-                comandaUpdate.Parameters.Add("@NIF", System.Data.SqlDbType.NVarChar).Value = usuario.NIF;
-                comandaUpdate.Parameters.Add("@IBAN", System.Data.SqlDbType.NVarChar).Value = usuario.IBAN;
+                //comandaUpdate.Parameters.Add("@NIF", System.Data.SqlDbType.NVarChar).Value = usuario.NIF;
+                //comandaUpdate.Parameters.Add("@IBAN", System.Data.SqlDbType.NVarChar).Value = usuario.IBAN;
                 comandaUpdate.Parameters.Add("@Token", System.Data.SqlDbType.NVarChar).Value = tokenLlamada;
 
                 int res = comandaUpdate.ExecuteNonQuery();
@@ -155,8 +155,8 @@ namespace API_MyFootballTeam.Areas.API.Models
                 usuario.NombreUsuario = reader.GetString(3);
                 usuario.ApellidoUsuario = reader.GetString(4);
                 usuario.TelefonoUsuario = reader.GetDecimal(5);
-                usuario.NIF = reader.GetString(6);
-                usuario.IBAN = reader.GetString(7);
+                //usuario.NIF = reader.GetString(6);
+                //usuario.IBAN = reader.GetString(7);
                 usuario.Token = reader.GetString(8);
             }
             reader.Close();
@@ -202,8 +202,8 @@ namespace API_MyFootballTeam.Areas.API.Models
                 usuario.NombreUsuario = reader.GetString(3);
                 usuario.ApellidoUsuario = reader.GetString(4);
                 usuario.TelefonoUsuario = reader.GetDecimal(5);
-                usuario.NIF = reader.GetString(6);
-                usuario.IBAN = reader.GetString(7);
+                //usuario.NIF = reader.GetString(6);
+                //usuario.IBAN = reader.GetString(7);
                 //usuario.Token = reader.GetString(8);
 
                 lista.Add(usuario);

@@ -8,7 +8,7 @@ namespace API_MyFootballTeam.Areas.API.Models
     public class Partido
     {
         public int IdPartido { get; set; }
-        public DateTime FechaPartido { get; set; }
+        public String FechaPartido { get; set; }
         public int Jornada { get; set; }
         public string Rival { get; set; }
         public Boolean Local { get; set; }

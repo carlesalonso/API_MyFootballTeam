@@ -49,7 +49,7 @@ namespace API_MyFootballTeam.Areas.API.Models
             reader.Close();
             
 
-            sqlQuery = "INSERT INTO Equipo (NombreEquipo, Direccion, Categoria, FotoEscudo, Usuario_IdUsuario) VALUES (@NombreEquipo, @Direccion, @Categoria, @FotoEscudo, @Usuario_IdUsuario)";
+            sqlQuery = "INSERT INTO Equipo (NombreEquipo, Direccion, Categoria, Usuario_IdUsuario) VALUES (@NombreEquipo, @Direccion, @Categoria, @Usuario_IdUsuario)";
 
             SqlCommand comandaInsert = new SqlCommand(sqlQuery, conexion);
 
@@ -59,14 +59,14 @@ namespace API_MyFootballTeam.Areas.API.Models
             comandaInsert.Parameters.Add("@NombreEquipo", System.Data.SqlDbType.NVarChar).Value = equipo.NombreEquipo;
             comandaInsert.Parameters.Add("@Direccion", System.Data.SqlDbType.NVarChar).Value = equipo.Direccion;
             comandaInsert.Parameters.Add("@Categoria", System.Data.SqlDbType.NVarChar).Value = equipo.Categoria;
-            if (equipo.FotoEscudo == null)
-            {
-                comandaInsert.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = DBNull.Value;
-            }
-            else
-            {
-                comandaInsert.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = equipo.FotoEscudo;
-            }
+            //if (equipo.FotoEscudo == null)
+            //{
+            //    comandaInsert.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = DBNull.Value;
+            //}
+            //else
+            //{
+            //    comandaInsert.Parameters.Add("@FotoEscudo", System.Data.SqlDbType.NVarChar).Value = equipo.FotoEscudo;
+            //}
             comandaInsert.Parameters.Add("@Usuario_IdUsuario", System.Data.SqlDbType.Int).Value = idUsuario;
 
             int res = comandaInsert.ExecuteNonQuery();

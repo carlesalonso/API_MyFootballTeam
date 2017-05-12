@@ -165,7 +165,7 @@ namespace API_MyFootballTeam.Areas.API.Models
             SqlConnection conexion = new SqlConnection(cadenaConexion);
             conexion.Open();
 
-            string sqlQuery = "SELECT IdEvento, Minuto, NombreEvento, Partido_IdPartido, Jugador_IdJugador FROM Evento WHERE Partido_IdPartido = @Partido_IdPartido";
+            string sqlQuery = "SELECT IdEvento, NombreEvento, Partido_IdPartido FROM Evento WHERE Partido_IdPartido = @Partido_IdPartido";
             SqlCommand comandaSelect = new SqlCommand(sqlQuery, conexion);
             comandaSelect.Parameters.Add("@Partido_IdPartido", System.Data.SqlDbType.Int).Value = idPartido;
             SqlDataReader reader = comandaSelect.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
@@ -174,17 +174,17 @@ namespace API_MyFootballTeam.Areas.API.Models
                 Evento evento = new Evento();
 
                 evento.IdEvento = reader.GetInt32(0);
-                evento.Minuto = reader.GetInt32(1);
-                evento.NombreEvento = reader.GetString(2);
-                evento.Partido_IdPartido = reader.GetInt32(3);
-                try
-                {
-                    evento.Jugador_IdJugador = reader.GetInt32(4);
-                }
-                catch (Exception)
-                {
-                    evento.Jugador_IdJugador = -1;
-                }
+                //evento.Minuto = reader.GetInt32(1);
+                evento.NombreEvento = reader.GetString(1);
+                evento.Partido_IdPartido = reader.GetInt32(2);
+                //try
+                //{
+                //    evento.Jugador_IdJugador = reader.GetInt32(4);
+                //}
+                //catch (Exception)
+                //{
+                //    evento.Jugador_IdJugador = -1;
+                //}
 
 
                 lista.Add(evento);

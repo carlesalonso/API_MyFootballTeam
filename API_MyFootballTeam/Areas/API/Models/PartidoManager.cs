@@ -120,7 +120,10 @@ namespace API_MyFootballTeam.Areas.API.Models
                 partido = new Partido();
 
                 partido.IdPartido = reader.GetInt32(0);
-                partido.FechaPartido = reader.GetDateTime(1);
+                DateTime fecha = reader.GetDateTime(1);
+
+                partido.FechaPartido = Convert.ToString(fecha);
+                //partido.FechaPartido = Convert.ToString(reader.GetDateTime(1));
                 partido.Jornada = reader.GetInt32(2);
                 partido.Rival = reader.GetString(3);
                 partido.Local = reader.GetBoolean(4);
@@ -157,7 +160,11 @@ namespace API_MyFootballTeam.Areas.API.Models
                 Partido partido = new Partido();
 
                 partido.IdPartido = reader.GetInt32(0);
-                partido.FechaPartido = reader.GetDateTime(1);
+                
+                DateTime fecha = reader.GetDateTime(1);
+
+                partido.FechaPartido = Convert.ToString(fecha);
+                //partido.FechaPartido = Convert.ToString(reader.GetDateTime(1));
                 partido.Jornada = reader.GetInt32(2);
                 partido.Rival = reader.GetString(3);
                 partido.Local = reader.GetBoolean(4);
