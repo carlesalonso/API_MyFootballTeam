@@ -16,17 +16,17 @@ namespace API_MyFootballTeam.Areas.API.Controllers
             UsuariosManager = new UsuarioManager();
         }
 
-        // GET /Api/Usuarios
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Usuarios
         [HttpGet]
         public JsonResult Usuarios()
         {
             return Json(UsuariosManager.GetUsuarios(), JsonRequestBehavior.AllowGet);
         }
 
-        // POST     /Api/Usuarios/Usuario       { NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // PUT      /Api/Usuarios/Usuario/3     { IdUsuario:3, NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // GET      /Api/Usuarios/Usuario/3
-        // DELETE   /Api/Usuarios/Usuario/3
+        // POST     http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Usuarios/Usuario      ?EmailUsuario=usuario2&Password=123&NombreUsuario=Morgan&ApellidoUsuario=Quintana&TelefonoUsuario=123456789
+        // PUT      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Usuarios/Usuario      ?EmailUsuario=morgan.cordoba@hotmail.com&Password=123&NombreUsuario=MorganManuel&ApellidoUsuario=Quintana&TelefonoUsuario=123456789&NIF=123&IBAN=123
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Usuarios/Usuario
+        // DELETE   http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Usuarios/Usuario
         public JsonResult Usuario(int? id, Usuario item)
         {
             switch (Request.HttpMethod)

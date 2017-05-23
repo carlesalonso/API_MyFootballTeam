@@ -16,17 +16,17 @@ namespace API_MyFootballTeam.Areas.API.Controllers
             EntrenamientosManager = new EntrenamientoManager();
         }
 
-        // GET /Api/Entrenamientos
+        // GET http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Entrenamientos     ?idEquipo=1
         [HttpGet]
         public JsonResult Entrenamientos(int idEquipo)
         {
             return Json(EntrenamientosManager.GetEntrenamientos(idEquipo), JsonRequestBehavior.AllowGet);
         }
 
-        // POST     /Api/Entrenamientos/Entrenamiento       { NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // PUT      /Api/Entrenamientos/Entrenamiento/3     { IdUsuario:3, NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // GET      /Api/Entrenamientos/Entrenamiento/3
-        // DELETE   /Api/Entrenamientos/Entrenamiento/3
+        // POST     http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Entrenamientos/Entrenamiento      ?Duracion=20&Orden=2&Ejercicio_IdEjercicio=3&Equipo_IdEquipo=1
+        // PUT      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Entrenamientos/Entrenamiento      ?IdEntrenamiento=1&Duracion=15&Orden=1&Ejercicio_IdEjercicio=2&Equipo_IdEquipo=1
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Entrenamientos/Entrenamiento      ?IdEntrenamiento=1
+        // DELETE   http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Entrenamientos/Entrenamiento      ?IdEntrenamiento=2
         public JsonResult Entrenamiento(int? id, Entrenamiento item)
         {
             switch (Request.HttpMethod)

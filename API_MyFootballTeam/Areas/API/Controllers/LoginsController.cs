@@ -16,14 +16,14 @@ namespace API_MyFootballTeam.Areas.API.Controllers
             LoginManager = new LoginManager();
         }
 
-        // POST /Api/Login/Usuario { Nombre:"nombre", Telefono:123456789 }
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Login     ?EmailUsuario=morgan&Password=123
         [HttpGet]
         public JsonResult Login(int? id, Login item)
         {
             switch (Request.HttpMethod)
             {
                 case "GET":
-                    //return Json(LoginManager.GetLogin(email, password), JsonRequestBehavior.AllowGet);
+                    
                     return Json(LoginManager.GetLogin(item), JsonRequestBehavior.AllowGet);
 
             }

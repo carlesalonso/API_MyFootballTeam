@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,17 +16,17 @@ namespace API_MyFootballTeam.Areas.API.Controllers
             EquiposManager = new EquipoManager();
         }
 
-        // GET /Api/Equipos
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Equipos
         [HttpGet]
         public JsonResult Equipos()
         {
             return Json(EquiposManager.GetEquipos(), JsonRequestBehavior.AllowGet);
         }
 
-        // POST     /Api/Equipos/Equipo       { NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // PUT      /Api/Equipos/Equipo/3     { IdUsuario:3, NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // GET      /Api/Equipos/Equipo/3
-        // DELETE   /Api/Equipos/Equipo/3
+        // POST     http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Equipos/Equipo        ?NombreEquipo=Atletico de Madrid&Direccion=Alarona&Categoria=PrimeraDivision
+        // PUT      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Equipos/Equipo        ?IdEquipo=9&NombreEquipo=Real Betis&Direccion=Alarona&Categoria=Primera Division&FotoEscudo=Escudopmg
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Equipos/Equipo        ?IdEquipo=1
+        // DELETE   http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Equipos/Equipo        ?IdEquipo=7
         public JsonResult Equipo(int? id, Equipo item)
         {
             switch (Request.HttpMethod)

@@ -16,17 +16,17 @@ namespace API_MyFootballTeam.Areas.API.Controllers
             EventosManager = new EventoManager();
         }
 
-        // GET /Api/Eventos
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Eventos       ?idPartido=58
         [HttpGet]
         public JsonResult Eventos(int idPartido)
         {
             return Json(EventosManager.GetEventos(idPartido), JsonRequestBehavior.AllowGet);
         }
 
-        // POST     /Api/Eventos/Evento       { NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // PUT      /Api/Eventos/Evento/3     { IdUsuario:3, NombreUsuario:"nombre", TelefonoUsuario:123456789 }
-        // GET      /Api/Eventos/Evento/3
-        // DELETE   /Api/Eventos/Evento/3
+        // POST     http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Eventos/Evento        ?NombreEvento=Gol&Partido_IdPartido=39
+        // PUT      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Eventos/Evento        ?IdEvento=8&Minuto=1&NombreEvento=Gol&Partido_IdPartido=2&Jugador_IdJugador=-1
+        // GET      http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Eventos/Evento        ?IdEvento=8
+        // DELETE   http://apimyfootballteamnuevawebapp.azurewebsites.net/API/Eventos/Evento        ?IdEvento=5
         public JsonResult Evento(int? id, Evento item)
         {
             switch (Request.HttpMethod)
